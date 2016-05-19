@@ -14,8 +14,13 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
@@ -34,6 +39,9 @@ public class FXMLController implements Initializable {
     private ImageView boxImage;
     @FXML
     private ImageView boxImage2;
+    @FXML
+    private TextField boxIe2;
+    @FXML private TextField text;
     private Controller controller;
 
     /**
@@ -67,13 +75,30 @@ public class FXMLController implements Initializable {
             }
             WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
             boxImage.setImage(image);
-            boxImage.setFitHeight(image.getHeight() / 2);
-            boxImage.setFitWidth(image.getWidth() / 2);
+            boxImage.setFitHeight(image.getHeight() / 3);
 
+            boxImage.setFitWidth(image.getWidth() / 3);
             controller.setView(bufferedImage);            
         }
 
     }
+    @FXML
+    void setNum(ActionEvent event) {
+        try {controller.setNum( Integer.parseInt(text.getText()) );
+        
+        } catch(NumberFormatException e) {text.setText("Веди число");}
+    }
+    
+    @FXML
+    void filtrAnaglif() {
+            WritableImage image;       
+            BufferedImage tmpImage = controller.getNewImage(Constant.ANAGLIF);
+            image = SwingFXUtils.toFXImage(tmpImage, null);
+            boxImage2.setImage(image);
+            boxImage2.setFitHeight(image.getHeight());
+            boxImage2.setFitWidth(image.getWidth());
+            
+        }
     
     @FXML
     void filtrSepia() {
@@ -94,6 +119,61 @@ public class FXMLController implements Initializable {
             boxImage2.setImage(image);
             boxImage2.setFitHeight(image.getHeight() / 2);
             boxImage2.setFitWidth(image.getWidth() / 2);
+            
+        }
+    
+    @FXML
+    void filtr3() {
+            WritableImage image;       
+            BufferedImage tmpImage = controller.getNewImage(Constant.FILTR3);
+            image = SwingFXUtils.toFXImage(tmpImage, null);
+            boxImage2.setImage(image);
+            boxImage2.setFitHeight(image.getHeight() / 2);
+            boxImage2.setFitWidth(image.getWidth() / 2);
+            
+        }
+    
+    @FXML
+    void test() {
+            WritableImage image;       
+            BufferedImage tmpImage = controller.getNewImage(5);
+            image = SwingFXUtils.toFXImage(tmpImage, null);
+            boxImage2.setImage(image);
+            boxImage2.setFitHeight(image.getHeight() / 2);
+            boxImage2.setFitWidth(image.getWidth() / 2);
+            
+        }
+    @FXML
+    void segment() {
+            setNum(null);
+            WritableImage image;       
+            BufferedImage tmpImage = controller.getNewImage(6);
+            image = SwingFXUtils.toFXImage(tmpImage, null);
+            boxImage2.setImage(image);
+            boxImage2.setFitHeight(image.getHeight() / 2);
+            boxImage2.setFitWidth(image.getWidth() / 2);
+            
+        }
+    void segment10() {
+            setNum(null);
+            WritableImage image;       
+            BufferedImage tmpImage = controller.getNewImage(6);
+            image = SwingFXUtils.toFXImage(tmpImage, null);
+            boxImage2.setImage(image);
+            boxImage2.setFitHeight(image.getHeight() / 3);
+            boxImage2.setFitWidth(image.getWidth() / 3);
+            
+        }
+    
+    @FXML
+    void zoom() {
+            setNum(null);
+            WritableImage image;       
+            BufferedImage tmpImage = controller.getNewImage(7);
+            image = SwingFXUtils.toFXImage(tmpImage, null);
+            boxImage2.setImage(image);
+            boxImage2.setFitHeight(image.getHeight() / 3);
+            boxImage2.setFitWidth(image.getWidth() / 3);
             
         }
     

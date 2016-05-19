@@ -16,19 +16,32 @@
     <stylesheets>
         <URL value="@fxml.css"/>
     </stylesheets>
+     <ScrollPane GridPane.columnIndex="1" GridPane.rowIndex="1">
     <ImageView fx:id="boxImage" disable="false" 
                 GridPane.columnIndex="1" GridPane.rowIndex="1"
                    fitHeight="100.0" fitWidth="100.0">
     </ImageView>
-     <ImageView fx:id="boxImage2" disable="false" 
+    </ScrollPane>
+     <ScrollPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <ImageView fx:id="boxImage2" disable="false" 
                 GridPane.columnIndex="2" GridPane.rowIndex="1"
                    fitHeight="100.0" fitWidth="100.0">
     </ImageView>
+    </ScrollPane>
     <HBox spacing="10" alignment="bottom_right" 
         GridPane.columnIndex="1" GridPane.rowIndex="4">
         <Button text="Open" onAction="#open" />
         <Button text="Negativ" onAction="#filtrNegativ" />
         <Button text="Sepia" onAction="#filtrSepia" />
+        <Button text="weird" onAction="#filtr3" />
+        <Button text="Anaglif" onAction="#filtrAnaglif" />
+    
+        <Button text="Segment" onAction="#segment" />
+        <Button text="Rotation" onAction="#test" />
+        <Button text="Zoom x1:" onAction="#zoom" />
+        <TextField fx:id="text" onAction="#setNum" text="2"/>
         
 </HBox>
+
+        
 </GridPane>

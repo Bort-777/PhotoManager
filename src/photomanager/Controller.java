@@ -12,6 +12,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import photomanager.segmentation.Segmentation;
+import photomanager.staticEditor.PhotoChange;
 
 /**
  *
@@ -22,6 +24,8 @@ public class Controller {
   
     private ViewControl view;
     private BufferedImage bufferedImage;
+    private BufferedImage bufferedImageRight;
+    private int num = 2;
 
     Controller() {
         
@@ -33,7 +37,12 @@ public class Controller {
     }
 
     void setView(BufferedImage bufferedImage) {
+        this.bufferedImageRight = this.bufferedImage;
         this.bufferedImage = bufferedImage;
+    }
+    
+    void setNum(int parseInt) {
+        this.num = parseInt;
     }
 
     BufferedImage getNewImage(int filtr) {
@@ -41,6 +50,11 @@ public class Controller {
         {
             case 1 : return PhotoEdit.negativ(copy(bufferedImage));
             case 2 : return PhotoEdit.sepia(copy(bufferedImage));
+            case 3 : return PhotoEdit.filtr3(copy(bufferedImage));
+            case 4 : return PhotoEdit.made3d(copy(bufferedImage), copy(bufferedImageRight));
+            case 5 : return PhotoChange.turn(copy(bufferedImage), num);
+            case 6 : return (new Segmentation(copy(bufferedImage), num)).segmentCheck();
+            case 7 : return PhotoChange.zoom(copy(bufferedImage), (double)num/1);
             default: return bufferedImage;
         }   
     }
@@ -51,5 +65,6 @@ public class Controller {
                 tmp.isAlphaPremultiplied(),
                 null);
     }
+
     
 }
